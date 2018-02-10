@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.css"],"names":[],"mappings":"AAAA,UACI,iBACA,eACA,kBACA,UACA,kBAAoB","file":"static/css/main.05db7659.css","sourcesContent":[".errorBox {\n    background: green;\n    font-size: 20px;\n    border-radius: 5px;\n    padding: 0px;\n    margin-bottom: 10px;\n}\n\n\n// WEBPACK FOOTER //\n// ./src/app.css"],"sourceRoot":""}
