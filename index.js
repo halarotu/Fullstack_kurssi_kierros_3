@@ -45,12 +45,13 @@ let persons = [
       }
 ]
 
-const formatData = (person) => {
+// not in use anymore
+/*const formatData = (person) => {
     return {
       name: person.name,
       number: person.number
     }
-}
+}*/
 
 app.get('/api/persons', (req, res) => {
     Person
@@ -80,7 +81,7 @@ app.delete('/api/persons/:id', (req, res) => {
 })
 
 app.post('/api/persons', (req, res) => {
-    const id = Math.round((Math.random() * 10000))
+    //const id = Math.round((Math.random() * 10000))
     const body = req.body
     
     if (body.name === undefined || body.number === undefined) {
@@ -92,13 +93,16 @@ app.post('/api/persons', (req, res) => {
         return res.status(400).json({error: 'name must be unique'})
     }
 
-    const person = {
+    const person = new Person({
         name: body.name,
-        number: body.number,
-        id: id
-    }
-    persons = persons.concat(person)
-    res.json(person)
+        number: body.number
+      })
+
+    person
+        .save()
+        .then(savedPerson => {
+            res.json(Person.format(savedPerson))
+      })
 })
 
 app.get('/info', (req, res) => {
