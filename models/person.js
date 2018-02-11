@@ -10,13 +10,15 @@ mongoose.Promise = global.Promise
 
 const personSchema = new Schema({
     name: String,
-    number: String
+    number: String,
+    id: String
   })
 
 personSchema.statics.format = function(person) {
     return {
         name: person.name,
-        number: person.number
+        number: person.number,
+        id: person.id
     }
 }
 
