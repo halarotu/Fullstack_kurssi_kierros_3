@@ -1,3 +1,5 @@
+import { Schema } from 'mongoose';
+
 const mongoose = require('mongoose')
 
 const dbuser = 'fullstack_kurssi'
@@ -7,9 +9,18 @@ const url = `mongodb://${dbuser}:${dbpassword}@ds227858.mlab.com:27858/my-mongo`
 mongoose.connect(url)
 mongoose.Promise = global.Promise
 
-const Person = mongoose.model('Person', {
+const personSchema = new Schema({
     name: String,
     number: String
   })
+
+const Person = mongoose.model('Person', personSchema)
+
+personSchema.statistics.format = (person) => {
+    return {
+        name: person.name,
+        number: person.number
+    }
+}
 
 module.exports = Person
