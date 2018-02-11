@@ -16,7 +16,7 @@ const personSchema = new Schema({
 
 const Person = mongoose.model('Person', personSchema)
 
-personSchema.statics.format = (person) => {
+personSchema.statics.format = function(person) {
     return {
         name: person.name,
         number: person.number
