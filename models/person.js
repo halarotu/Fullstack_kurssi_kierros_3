@@ -14,13 +14,14 @@ const personSchema = new Schema({
     number: String
   })
 
-const Person = mongoose.model('Person', personSchema)
-
 personSchema.statics.format = function(person) {
     return {
         name: person.name,
         number: person.number
     }
 }
+
+const Person = mongoose.model('Person', personSchema)
+
 
 module.exports = Person
