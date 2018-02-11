@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
+if ( process.env.NODE_ENV !== 'production' ) {
+    require('dotenv').config()
+  }
+
 const dbuser = 'fullstack_kurssi'
-const dbpassword = process.env.dbpassword || 'xxx'
+const dbpassword = process.env.dbpassword
 const url = `mongodb://${dbuser}:${dbpassword}@ds227858.mlab.com:27858/my-mongo`
 
 const Schema = mongoose.Schema
